@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-rendering-error" class="md-skip">
+        <a href="#autoware_map_loader-package" class="md-skip">
           Skip to content
         </a>
       
@@ -14357,6 +14357,124 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pointcloud_map_loader" class="md-nav__link">
+    pointcloud_map_loader
+  </a>
+  
+    <nav class="md-nav" aria-label="pointcloud_map_loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-features" class="md-nav__link">
+    Specific features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces" class="md-nav__link">
+    Interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lanelet2_map_loader" class="md-nav__link">
+    lanelet2_map_loader
+  </a>
+  
+    <nav class="md-nav" aria-label="lanelet2_map_loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feature_1" class="md-nav__link">
+    Feature
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-run" class="md-nav__link">
+    How to run
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscribed-topics" class="md-nav__link">
+    Subscribed Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#published-topics" class="md-nav__link">
+    Published Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -14373,29 +14491,284 @@
   
 
 
-<div><h1 id="macro-rendering-error"><em>Macro Rendering Error</em><a class="headerlink" href="#macro-rendering-error" title="Permanent link">#</a></h1>
-<p><em>File</em>: <code>map/autoware_map_loader/README.md</code></p>
-<p><em>JSONDecodeError</em>: Expecting property name enclosed in double quotes: line 34 column 7 (char 1229)</p>
-<div class="highlight"><pre><span></span><code>Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/mkdocs_macros/plugin.py", line 688, in render
-    return md_template.render(**page_variables)
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jinja2/environment.py", line 1295, in render
-    self.environment.handle_exception()
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/jinja2/environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "&lt;template&gt;", line 228, in top-level template code
-  File "/home/runner/work/autoware_universe/autoware_universe/mkdocs_macros.py", line 72, in json_to_markdown
-    data = json.load(f)
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/json/__init__.py", line 293, in load
-    return loads(fp.read(),
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/json/__init__.py", line 357, in loads
-    return _default_decoder.decode(s)
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/json/decoder.py", line 337, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/json/decoder.py", line 353, in raw_decode
-    obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 34 column 7 (char 1229)
-</code></pre></div></div>
+<div><h1 id="autoware_map_loader-package">autoware_map_loader package<a class="headerlink" href="#autoware_map_loader-package" title="Permanent link">#</a></h1>
+<p>This package provides the features of loading various maps.</p>
+<h2 id="pointcloud_map_loader">pointcloud_map_loader<a class="headerlink" href="#pointcloud_map_loader" title="Permanent link">#</a></h2>
+<h3 id="feature">Feature<a class="headerlink" href="#feature" title="Permanent link">#</a></h3>
+<p><code>pointcloud_map_loader</code> provides pointcloud maps to the other Autoware nodes in various configurations.
+Currently, it supports the following two types:</p>
+<ul>
+<li>Publish raw pointcloud map</li>
+<li>Publish downsampled pointcloud map</li>
+<li>Send partial pointcloud map loading via ROS 2 service</li>
+<li>Send differential pointcloud map loading via ROS 2 service</li>
+</ul>
+<p>NOTE: <strong>We strongly recommend to use divided maps when using large pointcloud map to enable the latter two features (partial and differential load). Please go through the prerequisites section for more details, and follow the instruction for dividing the map and preparing the metadata.</strong></p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<h4 id="prerequisites-on-pointcloud-map-files">Prerequisites on pointcloud map file(s)<a class="headerlink" href="#prerequisites-on-pointcloud-map-files" title="Permanent link">#</a></h4>
+<p>You may provide either a single .pcd file or multiple .pcd files. If you are using multiple PCD data, it MUST obey the following rules:</p>
+<ol>
+<li><strong>The pointcloud map should be projected on the same coordinate defined in <code>map_projection_loader</code></strong>, in order to be consistent with the lanelet2 map and other packages that converts between local and geodetic coordinates. For more information, please refer to <a href="https://github.com/autowarefoundation/autoware_universe/tree/main/map/autoware_map_projection_loader/README.md">the readme of <code>map_projection_loader</code></a>.</li>
+<li><strong>It must be divided by straight lines parallel to the x-axis and y-axis</strong>. The system does not support division by diagonal lines or curved lines.</li>
+<li><strong>The division size along each axis should be equal.</strong></li>
+<li><strong>The division size should be about 20m x 20m.</strong> Particularly, care should be taken as using too large division size (for example, more than 100m) may have adverse effects on dynamic map loading features in <a href="https://github.com/autowarefoundation/autoware_universe/tree/main/localization/autoware_ndt_scan_matcher">ndt_scan_matcher</a> and <a href="https://github.com/autowarefoundation/autoware_universe/tree/main/perception/autoware_compare_map_segmentation">autoware_compare_map_segmentation</a>.</li>
+<li><strong>All the split maps should not overlap with each other.</strong></li>
+<li><strong>Metadata file should also be provided.</strong> The metadata structure description is provided below.</li>
+</ol>
+<h4 id="metadata-structure">Metadata structure<a class="headerlink" href="#metadata-structure" title="Permanent link">#</a></h4>
+<p>The metadata should look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">x_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="nt">y_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="nt">A.pcd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2500</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1200 &lt; x &lt; 1220, 2500 &lt; y &lt; 2520</span>
+<span class="nt">B.pcd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1220</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2500</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1220 &lt; x &lt; 1240, 2500 &lt; y &lt; 2520</span>
+<span class="nt">C.pcd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2520</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1200 &lt; x &lt; 1220, 2520 &lt; y &lt; 2540</span>
+<span class="nt">D.pcd</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1240</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2520</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1240 &lt; x &lt; 1260, 2520 &lt; y &lt; 2540</span>
+</code></pre></div>
+<p>where,</p>
+<ul>
+<li><code>x_resolution</code> and <code>y_resolution</code></li>
+<li><code>A.pcd</code>, <code>B.pcd</code>, etc, are the names of PCD files.</li>
+<li>List such as <code>[1200, 2500]</code> are the values indicate that for this PCD file, x coordinates are between 1200 and 1220 (<code>x_resolution</code> + <code>x_coordinate</code>) and y coordinates are between 2500 and 2520 (<code>y_resolution</code> + <code>y_coordinate</code>).</li>
+</ul>
+<p>You may use <a href="https://github.com/autowarefoundation/autoware_tools/tree/main/map/autoware_pointcloud_divider">pointcloud_divider</a> for dividing pointcloud map as well as generating the compatible metadata.yaml.</p>
+<h4 id="directory-structure-of-these-files">Directory structure of these files<a class="headerlink" href="#directory-structure-of-these-files" title="Permanent link">#</a></h4>
+<p>If you only have one pointcloud map, Autoware will assume the following directory structure by default.</p>
+<div class="highlight"><pre><span></span><code>sample-map-rosbag
+├──<span class="w"> </span>lanelet2_map.osm
+├──<span class="w"> </span>pointcloud_map.pcd
+</code></pre></div>
+<p>If you have multiple rosbags, an example directory structure would be as follows. Note that you need to have a metadata when you have multiple pointcloud map files.</p>
+<div class="highlight"><pre><span></span><code>sample-map-rosbag
+├──<span class="w"> </span>lanelet2_map.osm
+├──<span class="w"> </span>pointcloud_map.pcd
+│<span class="w"> </span>├──<span class="w"> </span>A.pcd
+│<span class="w"> </span>├──<span class="w"> </span>B.pcd
+│<span class="w"> </span>├──<span class="w"> </span>C.pcd
+│<span class="w"> </span>└──<span class="w"> </span>...
+├──<span class="w"> </span>map_projector_info.yaml
+└──<span class="w"> </span>pointcloud_map_metadata.yaml
+</code></pre></div>
+<h3 id="specific-features">Specific features<a class="headerlink" href="#specific-features" title="Permanent link">#</a></h3>
+<h4 id="publish-raw-pointcloud-map-ros-2-topic">Publish raw pointcloud map (ROS 2 topic)<a class="headerlink" href="#publish-raw-pointcloud-map-ros-2-topic" title="Permanent link">#</a></h4>
+<p>The node publishes the raw pointcloud map loaded from the <code>.pcd</code> file(s).</p>
+<h4 id="publish-downsampled-pointcloud-map-ros-2-topic">Publish downsampled pointcloud map (ROS 2 topic)<a class="headerlink" href="#publish-downsampled-pointcloud-map-ros-2-topic" title="Permanent link">#</a></h4>
+<p>The node publishes the downsampled pointcloud map loaded from the <code>.pcd</code> file(s). You can specify the downsample resolution by changing the <code>leaf_size</code> parameter.</p>
+<h4 id="publish-metadata-of-pointcloud-map-ros-2-topic">Publish metadata of pointcloud map (ROS 2 topic)<a class="headerlink" href="#publish-metadata-of-pointcloud-map-ros-2-topic" title="Permanent link">#</a></h4>
+<p>The node publishes the pointcloud metadata attached with an ID. Metadata is loaded from the <code>.yaml</code> file. Please see <a href="https://github.com/autowarefoundation/autoware_msgs/tree/main/autoware_map_msgs#pointcloudmapmetadatamsg">the description of <code>PointCloudMapMetaData.msg</code></a> for details.</p>
+<h4 id="send-partial-pointcloud-map-ros-2-service">Send partial pointcloud map (ROS 2 service)<a class="headerlink" href="#send-partial-pointcloud-map-ros-2-service" title="Permanent link">#</a></h4>
+<p>Here, we assume that the pointcloud maps are divided into grids.</p>
+<p>Given a query from a client node, the node sends a set of pointcloud maps that overlaps with the queried area.
+Please see <a href="https://github.com/autowarefoundation/autoware_msgs/tree/main/autoware_map_msgs#getpartialpointcloudmapsrv">the description of <code>GetPartialPointCloudMap.srv</code></a> for details.</p>
+<h4 id="send-differential-pointcloud-map-ros-2-service">Send differential pointcloud map (ROS 2 service)<a class="headerlink" href="#send-differential-pointcloud-map-ros-2-service" title="Permanent link">#</a></h4>
+<p>Here, we assume that the pointcloud maps are divided into grids.</p>
+<p>Given a query and set of map IDs, the node sends a set of pointcloud maps that overlap with the queried area and are not included in the set of map IDs.
+Please see <a href="https://github.com/autowarefoundation/autoware_msgs/tree/main/autoware_map_msgs#getdifferentialpointcloudmapsrv">the description of <code>GetDifferentialPointCloudMap.srv</code></a> for details.</p>
+<h4 id="send-selected-pointcloud-map-ros-2-service">Send selected pointcloud map (ROS 2 service)<a class="headerlink" href="#send-selected-pointcloud-map-ros-2-service" title="Permanent link">#</a></h4>
+<p>Here, we assume that the pointcloud maps are divided into grids.</p>
+<p>Given IDs query from a client node, the node sends a set of pointcloud maps (each of which attached with unique ID) specified by query.
+Please see <a href="https://github.com/autowarefoundation/autoware_msgs/tree/main/autoware_map_msgs#getselectedpointcloudmapsrv">the description of <code>GetSelectedPointCloudMap.srv</code></a> for details.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable_whole_load</td>
+<td>boolean</td>
+<td>Enable raw pointcloud map publishing</td>
+<td>True</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>enable_downsampled_whole_load</td>
+<td>boolean</td>
+<td>Enable downsampled pointcloud map publishing</td>
+<td>False</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>enable_partial_load</td>
+<td>boolean</td>
+<td>Enable partial pointcloud map server</td>
+<td>True</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>enable_selected_load</td>
+<td>boolean</td>
+<td>Enable selected pointcloud map server</td>
+<td>False</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>leaf_size</td>
+<td>float</td>
+<td>Downsampling leaf size (only used when enable_downsampled_whole_load is set true)</td>
+<td>3.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>pcd_paths_or_directory</td>
+<td>array</td>
+<td>Path(s) to pointcloud map file or directory</td>
+<td>[]</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>pcd_metadata_path</td>
+<td>string</td>
+<td>Path to pointcloud metadata file</td>
+<td></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">#</a></h3>
+<ul>
+<li><code>output/pointcloud_map</code> (sensor_msgs/msg/PointCloud2) : Raw pointcloud map</li>
+<li><code>output/pointcloud_map_metadata</code> (autoware_map_msgs/msg/PointCloudMapMetaData) : Metadata of pointcloud map</li>
+<li><code>output/debug/downsampled_pointcloud_map</code> (sensor_msgs/msg/PointCloud2) : Downsampled pointcloud map</li>
+<li><code>service/get_partial_pcd_map</code> (autoware_map_msgs/srv/GetPartialPointCloudMap) : Partial pointcloud map</li>
+<li><code>service/get_differential_pcd_map</code> (autoware_map_msgs/srv/GetDifferentialPointCloudMap) : Differential pointcloud map</li>
+<li><code>service/get_selected_pcd_map</code> (autoware_map_msgs/srv/GetSelectedPointCloudMap) : Selected pointcloud map</li>
+<li>pointcloud map file(s) (.pcd)</li>
+<li>metadata of pointcloud map(s) (.yaml)</li>
+</ul>
+<hr>
+<h2 id="lanelet2_map_loader">lanelet2_map_loader<a class="headerlink" href="#lanelet2_map_loader" title="Permanent link">#</a></h2>
+<h3 id="feature_1">Feature<a class="headerlink" href="#feature_1" title="Permanent link">#</a></h3>
+<p><code>lanelet2_map_loader</code> loads Lanelet2 file(s) and publishes the map data as <code>autoware_map_msgs/LaneletMapBin</code> message.
+The node projects lan/lon coordinates into arbitrary coordinates defined in <code>/map/map_projector_info</code> from <code>map_projection_loader</code>.
+Please see <a href="https://github.com/autowarefoundation/autoware_msgs/blob/main/autoware_map_msgs/msg/MapProjectorInfo.msg">autoware_map_msgs/msg/MapProjectorInfo.msg</a> for supported projector types.
+lanelet2_map_loader provides Lanelet2 maps in two different configurations:</p>
+<ul>
+<li>It loads single Lanelet2 file and publishes the map data as <code>autoware_map_msgs/LaneletMapBin</code> message.</li>
+<li>It loads multiple Lanelet2 files differentially via ROS 2 service.</li>
+</ul>
+<p>NOTE: <strong>If you work on large scale area, we recommend to use differential loading feature to avoid the time-consuming
+in various nodes that use the Lanelet2 map data.</strong></p>
+<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">#</a></h3>
+<h4 id="prerequisites-on-lanelet2-map-files">Prerequisites on Lanelet2 map file(s)<a class="headerlink" href="#prerequisites-on-lanelet2-map-files" title="Permanent link">#</a></h4>
+<p>You may provide either a single <code>.osm</code> file or multiple <code>.osm</code> files. If you are using multiple OSM file,
+it MUST obey the following rules:</p>
+<ol>
+<li><strong>The <code>.osm</code> files should all be within the same MGRS grid</strong>. The system does not support loading multiple <code>.osm</code> files from different MGRS grids.</li>
+<li><strong>It must be divided by straight lines parallel to the x-axis and y-axis</strong>. The system does not support division by diagonal lines or curved lines.</li>
+<li><strong>Metadata file should also be provided.</strong> The metadata structure description is provided below.</li>
+</ol>
+<h4 id="metadata-structure_1">Metadata structure<a class="headerlink" href="#metadata-structure_1" title="Permanent link">#</a></h4>
+<p>The metadata should look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">x_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="nt">y_resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.0</span>
+<span class="nt">A.osm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2500</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1200 &lt; x &lt; 1220, 2500 &lt; y &lt; 2520</span>
+<span class="nt">B.osm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1220</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2500</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1220 &lt; x &lt; 1240, 2500 &lt; y &lt; 2520</span>
+<span class="nt">C.osm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1200</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2520</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1200 &lt; x &lt; 1220, 2520 &lt; y &lt; 2540</span>
+<span class="nt">D.osm</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1240</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2520</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1"># -&gt; 1240 &lt; x &lt; 1260, 2520 &lt; y &lt; 2540</span>
+</code></pre></div>
+<p>where,</p>
+<ul>
+<li><code>x_resolution</code> and <code>y_resolution</code> are the resolution of the map in meters.</li>
+<li><code>A.osm</code>, <code>B.osm</code>, etc, are the names of OSM files.</li>
+<li>List such as <code>[1200, 2500]</code> are the values indicate that for this OSM file, x coordinates are between 1200 and 1220 (<code>x_resolution</code> + <code>x_coordinate</code>) and y coordinates are between 2500 and 2520 (<code>y_resolution</code> + <code>y_coordinate</code>).</li>
+</ul>
+<p>You may use <a href="https://github.com/leo-drive/lanelet2-map-tile-generator">lanelet2_map_tile_generator</a> from LeoDrive for
+dividing Lanelet2 map as well as generating the compatible metadata.yaml.</p>
+<h4 id="directory-structure-of-these-files_1">Directory structure of these files<a class="headerlink" href="#directory-structure-of-these-files_1" title="Permanent link">#</a></h4>
+<p>If you only have one Lanelet2 map, Autoware will assume the following directory structure by default.</p>
+<div class="highlight"><pre><span></span><code>sample-map-rosbag
+├──<span class="w"> </span>lanelet2_map.osm
+├──<span class="w"> </span>pointcloud_map.pcd
+</code></pre></div>
+<p>If you have multiple Lanelet2 maps, an example directory structure would be as follows. Note that you need to have a metadata when you have multiple Lanelet2 map files.</p>
+<div class="highlight"><pre><span></span><code>sample-map-rosbag
+├──<span class="w"> </span>pointcloud_map.pcd
+├──<span class="w"> </span>lanelet2_map.osm
+│<span class="w"> </span>├──<span class="w"> </span>A.osm
+│<span class="w"> </span>├──<span class="w"> </span>B.osm
+│<span class="w"> </span>├──<span class="w"> </span>C.osm
+│<span class="w"> </span>└──<span class="w"> </span>...
+├──<span class="w"> </span>map_projector_info.yaml
+├──<span class="w"> </span>lanelet2_map_metadata.yaml
+└──<span class="w"> </span>...
+</code></pre></div>
+<h3 id="how-to-run">How to run<a class="headerlink" href="#how-to-run" title="Permanent link">#</a></h3>
+<p><code>ros2 run autoware_map_loader lanelet2_map_loader --ros-args -p lanelet2_map_path:=path/to/map.osm</code></p>
+<h3 id="subscribed-topics">Subscribed Topics<a class="headerlink" href="#subscribed-topics" title="Permanent link">#</a></h3>
+<ul>
+<li>~input/map_projector_info (autoware_map_msgs/MapProjectorInfo) : Projection type for Autoware</li>
+</ul>
+<h3 id="published-topics">Published Topics<a class="headerlink" href="#published-topics" title="Permanent link">#</a></h3>
+<p>If you use single Lanelet2 map file:</p>
+<ul>
+<li>~output/lanelet2_map (autoware_map_msgs/LaneletMapBin) : Binary data of loaded Lanelet2 Map</li>
+</ul>
+<p>If you use multiple Lanelet2 map files:</p>
+<ul>
+<li>~output/lanelet_map_meta_data (autoware_map_msgs/msg/LaneletMapMetaData) : Metadata of Lanelet2 Map</li>
+</ul>
+<h3 id="services">Services<a class="headerlink" href="#services" title="Permanent link">#</a></h3>
+<p>If you use multiple Lanelet2 map files:</p>
+<ul>
+<li>~service/get_differential_lanelet_map (autoware_map_msgs/srv/GetSelectedLanelet2Map) : Differential loading of Lanelet2 Map</li>
+</ul>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enable_differential_map_loading</td>
+<td>string</td>
+<td>Flag to enable loading of differential map</td>
+<td>true</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>allow_unsupported_version</td>
+<td>boolean</td>
+<td>Flag to load unsupported format_version anyway. If true, just prints warning.</td>
+<td>true</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>center_line_resolution</td>
+<td>float</td>
+<td>Resolution of the Lanelet center line [m]</td>
+<td>5.0</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>use_waypoints</td>
+<td>boolean</td>
+<td>If true, <code>centerline</code> in the Lanelet2 map will be used as a <code>waypoints</code> tag.</td>
+<td>True</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>lanelet2_map_paths_or_directory</td>
+<td>string</td>
+<td>The lanelet2 map path pointing to the .osm file or directory that contains multiple .osm files</td>
+<td></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p><code>use_waypoints</code> decides how to handle a centerline.
+This flag enables to use the <code>overwriteLaneletsCenterlineWithWaypoints</code> function instead of <code>overwriteLaneletsCenterline</code>. Please see <a href="https://github.com/autowarefoundation/autoware_lanelet2_extension/blob/main/autoware_lanelet2_extension/docs/lanelet2_format_extension.md#centerline">the document of the autoware_lanelet2_extension package</a> in detail.</p></div>
 
 
 
